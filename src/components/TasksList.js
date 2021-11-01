@@ -1,11 +1,20 @@
 import Task from './Task';
+import useTasks from '../hooks/useTasks';
+import { useEffect } from 'react';
 
-const TasksList = ({tasks}) => {
+const TasksList = () => {
+
+const {tasks, loadTasks} = useTasks();
+useEffect(()=>{
+		loadTasks();
+	}, [loadTasks]); 
+
+console.log(`Mytasks:${tasks}`);
   return (
     <ul className="tasksList"> 
       { tasks && tasks.length ?
-        tasks.map( task => <Task key={task.id }/> )
-        : "No hay datos de la api" }
+        tasks.map( task => <Task key={task.id } task={task}/> )
+        : "There is no data from the local API" }
     </ul>
   )
 }
