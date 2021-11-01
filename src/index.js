@@ -3,7 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import configureStore from './redux/store/store';
 import {Provider} from 'react-redux';
+
+let store = configureStore();
 
 ReactDOM.render(
   <React.StrictMode>

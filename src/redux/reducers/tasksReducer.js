@@ -8,7 +8,7 @@ const tasksReducer = (tasks=[], action) => {
       newTasks = [...action.tasks];
       break;
     default:
-      newTasks = tasks;
+      newTasks = [...tasks];
   }
 
   return newTasks;

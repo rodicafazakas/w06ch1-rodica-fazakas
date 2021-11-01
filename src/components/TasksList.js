@@ -2,8 +2,10 @@ import Task from './Task';
 
 const TasksList = ({tasks}) => {
   return (
-    <ul>
-        {tasks.map( task => <Task/> )}
+    <ul className="tasksList"> 
+      { tasks && tasks.length ?
+        tasks.map( task => <Task key={task.id }/> )
+        : "No hay datos de la api" }
     </ul>
   )
 }

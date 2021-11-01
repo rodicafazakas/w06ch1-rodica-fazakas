@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <h1> Todo List </h1>
       <Form />
-      <TasksList tasks={[{"id": 1, "name": "laundry"}]} />
+      <TasksList  />
     </div>
   );
 }
