@@ -11,7 +11,7 @@ useEffect(()=>{
 
 console.log(`Mytasks:${tasks}`);
   return (
-    <ul className="tasksList"> 
+    <ul className="tasks"> 
       { tasks && tasks.length ?
         tasks.map( task => <Task key={task.id } task={task}/> )
         : "There is no data from the local API" }
