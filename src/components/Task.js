@@ -1,10 +1,8 @@
 const Task = (task) => {
 
   return (
-    <li> 
-      <div> 
-        {task.task.name} 
-      </div> 
+    <li className="task"> 
+      {task.task.name} 
     </li>
   )
 }
