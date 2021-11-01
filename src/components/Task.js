@@ -1,9 +1,11 @@
-const Task = ({text}) => {
-  return (
-    <>
-    <li>{text}</li>
-    </>
+const Task = (task) => {
 
+  return (
+    <li> 
+      <div> 
+        {task.task.name} 
+      </div> 
+    </li>
   )
 }
 
