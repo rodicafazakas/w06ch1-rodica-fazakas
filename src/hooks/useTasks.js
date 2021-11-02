@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useCallback } from 'react';
-import { createTaskThunk, loadTasksThunk, updateTaskThunk, deleteTaskThunk } from "../redux/thunks/thunks";
+import { createTaskThunk, loadTasksThunk, updateTaskThunk } from "../redux/thunks/thunks";
 
 
 const useTasks=()=> {
