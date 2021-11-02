@@ -1,6 +1,6 @@
 import { useState } from "react";
-import useTasks from "../hooks/useTasks";
-import { deleteTaskAction } from "../redux/actions/actionCreators";
+// import useTasks from "../hooks/useTasks";
+// import { deleteTaskAction } from "../redux/actions/actionCreators";
 
 const Task = (task, onToggle, onDelete, onUpdate) => {
 

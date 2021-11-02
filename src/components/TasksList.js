@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 const TasksList = () => {
 
-const {tasks, loadTasks, deleteTask, updateTask} = useTasks();
+const {tasks, loadTasks} = useTasks();
 
 useEffect(()=>{
 		loadTasks();
