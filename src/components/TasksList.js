@@ -11,11 +11,6 @@ useEffect(()=>{
 	}, [loadTasks]); 
 
 
-
-// const onDeleteTask = (task) => {
-//   deleteTask(task);
-// }  
-
 // const onToggleTask = (id) => {
 //   toggleTask(task.id)
 // }  
@@ -24,7 +19,11 @@ useEffect(()=>{
   return (
     <ul className="tasks"> 
       { tasks && tasks.length ?
-        tasks.map( task => <Task key={task.id } task={task} />)
+        tasks.map( task => {
+          return (
+            <Task key={task.id } task={task} />
+            );
+        })
         : "There is no data from the local API" }
     </ul>
   )
