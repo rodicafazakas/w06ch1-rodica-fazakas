@@ -13,12 +13,6 @@ export const loadTasksThunk = () => async (dispatch) => {
 	dispatch(loadTasksAction(tasks));
 }
 
-// export const loadTaskThunk = async (dispatch) => {
-//   const response = await fetch("urlapi");
-//   const task = await response.json();
-//   dispatch(loadTaskAction(task));
-// };
-
 export const createTaskThunk = (task) => async(dispatch) => {
   const response = await fetch(apiUrl, {
       method: "POST",
@@ -31,15 +25,17 @@ export const createTaskThunk = (task) => async(dispatch) => {
   dispatch(createTaskAction(newTask));
 };
 
-export const deleteTaskThunk = (task) => async (dispatch) => {
-  const response = await fetch(`apiUrl/${task.id}`, {method: "DELETE",});
-  if (response.ok) {
-    dispatch(deleteTaskAction(task));
+export const deleteTaskThunk = (id) => {
+  return async (dispatch) => {
+  const response = await fetch(`${apiUrl}/${id}`, {method: "DELETE",});
+    if (response.ok) {
+      dispatch(deleteTaskAction(id));
+    }
   }
 };
 
 export const updateTaskThunk = (task) => async (dispatch) => {
-  const response = await fetch(`apiUrl/${task.id}`, {
+  const response = await fetch(`${apiUrl}/${task.id}`, {
       method: "PUT",
       body: JSON.stringify(task),
       headers: {
