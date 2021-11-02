@@ -4,16 +4,27 @@ import { useEffect } from 'react';
 
 const TasksList = () => {
 
-const {tasks, loadTasks} = useTasks();
+const {tasks, loadTasks, deleteTask, updateTask} = useTasks();
+
 useEffect(()=>{
 		loadTasks();
 	}, [loadTasks]); 
 
-console.log(`Mytasks:${tasks}`);
+
+
+// const onDeleteTask = (task) => {
+//   deleteTask(task);
+// }  
+
+// const onToggleTask = (id) => {
+//   toggleTask(task.id)
+// }  
+
+
   return (
     <ul className="tasks"> 
       { tasks && tasks.length ?
-        tasks.map( task => <Task key={task.id } task={task}/> )
+        tasks.map( task => <Task key={task.id } task={task} />)
         : "There is no data from the local API" }
     </ul>
   )

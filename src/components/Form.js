@@ -1,16 +1,30 @@
-import {useState} from 'react'; 
+import {useEffect, useState, useMemo} from 'react'; 
 import useTasks from '../hooks/useTasks';
+import { resetCurrentTaskAction } from '../redux/actions/actionCreators';
+import currentTaskReducer from '../redux/reducers/currentTaskReducer';
 
-const Form = ({dispatch}) => {
+const Form = () => {
   const {createTask} = useTasks();
 
-  const initialValues = {
-    id: "",
-    name: "",
-    completed: false
-  };
+  const initialValues = useMemo (
+    () => 
+      ({
+        id: "",
+        name: "",
+        completed: false
+      }), []  
+  );
 
   const [taskData, setTaskData] = useState(initialValues);
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+
+  // useEffect( ()=> {
+  //   if ( currentTaskReducer.isEditing) {
+  //     setTaskData(currentTask.task)
+  //   } else {
+  //     setTaskData(initialvalues)
+  //   }), [currentTask, initialValues]
+  // });
 
   const changeData = (event) => {
     setTaskData({
@@ -20,16 +34,35 @@ const Form = ({dispatch}) => {
     });
   };
 
-  const onCreateTask = (event) => {
+  useEffect(()=>{
+    setButtonDisabled(taskData.name === "")
+  }, [taskData]);
+
+  const onSubmit = (event) => {
     event.preventDefault();
     createTask(taskData);
+    setTaskData(initialValues);
+
+    // if(currentTask.isEditing) {
+    //   updateTask(taskData);
+    //   setTaskData(initialValues);
+    //   resetCurrentTask();
+
+    // } else {
+    //   createTask(taskData);
+    //   setTaskData(initialValues);
+    // } 
   }
 
   return (
     <>
-    <form onSubmit={onCreateTask}>
-      <input type="text" placeholder="Enter a new task" onChange={changeData} />
-      <button type="submit">Add task</button>
+    <form onSubmit={onSubmit} autoComplete="off" noValidate>
+      <div className="form-group">
+        <input type="text" placeholder="Enter a new task" onChange={changeData} />
+      </div>
+      <div className="form-group">
+        <button type="submit" disabled={buttonDisabled}>Add task</button>
+      </div>
     </form>
     </>
   )
