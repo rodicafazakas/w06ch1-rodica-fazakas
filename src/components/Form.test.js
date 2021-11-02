@@ -21,4 +21,11 @@ describe("Given a Form component", () => {
       expect(button).toBeInTheDocument();
     });
   })
+
+  //test disable button
+  //userEvent.type(name, "running");
+  //expect(button).not.ToBeDisabled();
+
+  //test delete button
+  //const button=screen.getByRole("button", {name:})
 });  

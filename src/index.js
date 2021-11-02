@@ -1,12 +1,25 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+//import "bootstrap/dist/css/bootstrap.min.css";
+//import "bootstrap/dist/js/bootstrap.js";
+// import "@fontsource/montserrat";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import configureStore from './redux/store/store';
 import {Provider} from 'react-redux';
 
-let store = configureStore();
+// the store looks like this initialValues
+let store = configureStore({
+  tasks: [
+    {
+      id: 1,
+      name: "laundry",
+      complete: false
+    },
+  ],
+  currentTask: {},
+});
 
 ReactDOM.render(
   <React.StrictMode>

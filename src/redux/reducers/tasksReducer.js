@@ -13,6 +13,28 @@ const tasksReducer = (tasks=[], action) => {
     case (actionTypes.deleteTask):
       newTasks = tasks.filter(task => task.id !== action.id );
       break;   
+    case (actionTypes.updateTask):
+      newTasks =   tasks.map( 
+        (task) => task.id === action.task.id 
+        ? { ...task, 
+            ...action.task
+          } 
+        : task
+      );
+      // newTasks = [
+      //   ...tasks.filter((task) => task.id !== action.task.id),
+      //   action.task,
+      // ];
+      break;
+    case (actionTypes.toggleTask):
+      newTasks = tasks.map((task) => task.id===action.id 
+      ? {
+        ...task,
+        completed: !task.completed,
+      }
+      : task
+      );
+      break;
     default:
       newTasks = [...tasks];
   }
